@@ -6,7 +6,7 @@ import requests
 df_cleaned = pd.read_csv("account_specific_transactions.csv")
 
 df = df_cleaned.where(pd.notna(df_cleaned), None)  # Replace NaN with None (JSON friendly)
-response = requests.post("https://account-specific-anomaly-detection.onrender.com", json=df.to_dict(orient="records"))
+response = requests.post("https://account-specific-anomaly-detection-1.onrender.com", json=df.to_dict(orient="records"))
 
 
 
@@ -19,7 +19,7 @@ if uploaded_file:
     st.write("Preview of Uploaded Data:", df.head())
 
     if st.button("Detect Anomalies"):
-        response = requests.post("https://account-specific-anomaly-detection.onrender.com", json=df.to_dict(orient="records"))
+        response = requests.post("https://account-specific-anomaly-detection-1.onrender.com", json=df.to_dict(orient="records"))
 
     
     st.write("Response Status Code:", response.status_code)  # Print status code
